@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  font-family: Consolas, monospace;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #252526;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.sidebar-header {
+  font-size: 12px;
+  color: #cccccc;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.file-tree, .file-tree ul {
+  list-style: none;
+  padding-left: 15px;
+  margin: 0;
+}
+
+.folder, .file {
+  margin: 3px 0;
+  cursor: default;
+}
+
+.folder {
+  font-weight: bold;
+  color: #c586c0;
+}
+
+.file {
+  font-weight: normal;
+  color: #dcdcdc;
+}
+
+.folder ul {
+  margin-top: 3px;
+  border-left: 1px solid #333;
+  padding-left: 10px;
+}
