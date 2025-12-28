@@ -1,5 +1,0 @@
-Use the syntax
-function() | description
-to make your dictionaries then insert them for example
-print() | to output
-then you can use notes.info(NewNote) to get the dicts
