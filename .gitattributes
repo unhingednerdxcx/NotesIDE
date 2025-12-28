@@ -1,2 +1,22 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Files
+test.html
+setting.txt
+test
+
+# Folders
+__pycache__/
+.venv/
+Dict/
+example-folder/
+future-ideas/
+node_modules/
+
+# Node files
+package-lock.json
+package.json
+
+# User folder
+Dict/
+data/
+Notes/
+web/img/

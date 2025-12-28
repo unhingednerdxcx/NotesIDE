@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xterm.js Example</title>
+  <!-- Include xterm.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm/css/xterm.css" />
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      height: 100vh;
+      background: #1e1e1e;
+      color: white;
+      font-family: monospace;
+    }
+    #terminal {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal"></div>
+
+  <!-- Include xterm.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js"></script>
+  <script>
+    // Create a new terminal
+    const term = new Terminal({
+      cols: 80,
+      rows: 24,
+      cursorBlink: true,
+    });
+
+    // Attach terminal to DOM
+    term.open(document.getElementById('terminal'));
+
+    // Write some initial text
+    term.writeln('Welcome to xterm.js!');
+    term.writeln('Type something and press Enter:');
+
+    // Handle user input
+    term.onKey(e => {
+      const char = e.key;
+      if (char === '\r') { // Enter
+        term.write('\r\nYou pressed Enter!\r\n');
+      } else if (char === '\u007F') { // Backspace
+        term.write('\b \b');
+      } else {
+        term.write(char);
+      }
+    });
+  </script>
+</body>
+</html>
