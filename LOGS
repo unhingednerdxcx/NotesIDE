@@ -20,3 +20,9 @@ Done by changing the paremeters when called the function showNotfication()
 Added logs file <this file>
 # VERSION 1.4
 Added sys.go which ensures the environment set
+# VERSION 1.5
+Added source code for debugging. future versions will have 2 parts: source-code vversion and the compiled version for users
+This version will NOT have the compiled version, wait for the next version or compile it yourself like so:-
+```bash
+go run <osname>.go
+```
