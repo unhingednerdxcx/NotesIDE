@@ -34,3 +34,7 @@ Fixing path issues on all OS and dependency issues on windows
 
 ## PATCH 1.5.3
 Added Windows support and tested for windows. Next partch will target macOS or Linux
+
+### PATCH 1.5.3.2
+Fixed many logical errors REFLECTIONS:-
+this had occured due to the fact that windows uses backslashes instead of forward slashes and i mixed up an old version with the new one

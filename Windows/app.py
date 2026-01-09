@@ -16,7 +16,6 @@ from io import BytesIO
 from PIL import Image
 import signal
 import sys
-import select
 import threading
 import struct
 import serial
@@ -1049,20 +1048,25 @@ def test():
 
 @eel.expose
 def jsonmanager(proc, grp="", subgrp="", setto=""):
-    x = os.path.join(DAFOLDER, 'settings.json')
-    with open(x, 'r') as f:   
-        data = json.load(f)
-    if proc == 'g':
-        value = data[grp][subgrp]
-        return value
+    try:
+        x = os.path.join(DAFOLDER, 'settings.json')
+        with open(x, 'r') as f:   
+            data = json.load(f)
+        if proc == 'g':
+            print(grp, subgrp)
+            value = data[grp][subgrp]
+            return value
     
-    elif proc == 's':
-        data[grp][subgrp] = setto
-        with open(x, 'w') as f:
-            json.dump(data, f, indent= 4)
-        return {"success": True}
-    elif proc == 'ga':
-        return data
+        elif proc == 's':
+            data[grp][subgrp] = setto
+            with open(x, 'w') as f:
+                json.dump(data, f, indent= 4)
+            return {"success": True}
+        elif proc == 'ga':
+            return data
+    except:
+        print("error in json")
+        print("grp ~ subgrp", grp, subgrp)
 
 @eel.expose
 def getLastWorkspace():
