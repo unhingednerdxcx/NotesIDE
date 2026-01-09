@@ -17,9 +17,3 @@ node_modules/
 package-lock.json
 package.json
 
-# User folder
-Dict/
-data/
-Notes/
-web/img/
-future-ideas/

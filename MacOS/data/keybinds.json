@@ -1,0 +1,6 @@
+{
+    "alert": {
+        "keyBind": "Control+m",
+        "command": "alert(\"hi\")"
+    }
+}

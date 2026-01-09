@@ -1,0 +1,35 @@
+{
+    "appear": {
+        "Theme": "dark",
+        "Editortheme": "vs-dark",
+        "Fontfamily": "'Monaco', monospace",
+        "Fontsize": "14",
+        "Sidebar": "211",
+        "Minimap": true,
+        "Linenumber": true
+    },
+    "editor": {
+        "Tabsize": "5",
+        "Space": true,
+        "Wordwrap": true,
+        "Fillbracket": true,
+        "Formatsave": true,
+        "Trim": true,
+        "Cursorstyle": "line",
+        "Cursorblink": true
+    },
+    "terminal": {
+        "Shell": "auto",
+        "Fontsize": "14",
+        "Theme": "dark",
+        "Rightclick": true
+    },
+    "app": {
+        "Autotime": "3",
+        "Restore": false,
+        "Confirm": false,
+        "Update": false,
+        "log": "on"
+    },
+    "key": {}
+}
