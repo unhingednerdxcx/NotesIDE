@@ -3,6 +3,6 @@
  To initiate the ide run:
 ```bash
 cd location to app-folder
-go run sys.go
+go run <osname>.go
 # then later you can run python app.py if you want to open the app
 ```
