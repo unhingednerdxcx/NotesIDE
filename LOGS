@@ -28,3 +28,6 @@ go run <osname>.go
 ```
 ## PATCH 1.5.1
 Fixed the no data folder found bug
+
+## PATCH 1.5.2
+Fixing path issues on all OS and dependency issues on windows

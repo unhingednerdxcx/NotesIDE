@@ -35,6 +35,7 @@ import yaml
 FOLDER = os.getcwd()
 NFOLDER = os.path.join(FOLDER, 'Notes')
 DFOLDER = os.path.join(FOLDER, 'Dict')
+DAFOLDER = os.path.join(FOLDER, 'data')
 WFOLDER = 'web'
 IFOLDER = os.path.join(WFOLDER, 'img')
 os.makedirs(IFOLDER, exist_ok=True)
@@ -583,11 +584,11 @@ def log(file, info, other, err=False):
 @eel.expose
 def openFolder():
     file_path = open_native_folder_dialog()
-    with open('data/info.json', 'r') as f:
+    with open(f'{DAFOLDER}/info.json', 'r') as f:
         data = json.load(f)
     data['LastWorkspace'] = file_path
     log('py', '', data)
-    with open('data/info.json', 'w') as f:
+    with open(f'{DAFOLDER}/info.json', 'w') as f:
         json.dump(data, f, indent=4)
     log("py", f"successfully gave {file_path}", "")
     return {"success": True, "path": file_path}
@@ -777,9 +778,6 @@ def newNote(fileName):
     except Exception as e:
         return {"success": False, "error": str(e)}
 
-    finally:
-        return {"success": True}
-
 
 
 
@@ -876,7 +874,7 @@ serials = set()
 
 @eel.expose
 def UploadToDevice(chip, port, firmware):
-    with open("data/mcu.json", 'r') as f:
+    with open(f"{DAFOLDER}/mcu.json", 'r') as f:
         file = json.load(f)
     cmd = file[chip]["upload_command"]
     cmd = cmd.replace("{port}", port).replace("{file}", firmware)
@@ -1046,7 +1044,7 @@ def test():
 
 @eel.expose
 def jsonmanager(proc, grp="", subgrp="", setto=""):
-    with open("data/settings.json", 'r') as f:   
+    with open(f"{DAFOLDER}/settings.json", 'r') as f:   
         data = json.load(f)
     if proc == 'g':
         value = data[grp][subgrp]
@@ -1054,7 +1052,7 @@ def jsonmanager(proc, grp="", subgrp="", setto=""):
     
     elif proc == 's':
         data[grp][subgrp] = setto
-        with open("data/settings.json", 'w') as f:
+        with open(f"{DAFOLDER}/settings.json", 'w') as f:
             json.dump(data, f, indent= 4)
         return {"success": True}
     elif proc == 'ga':
@@ -1062,19 +1060,19 @@ def jsonmanager(proc, grp="", subgrp="", setto=""):
 
 @eel.expose
 def getLastWorkspace():
-    with open('data/info.json', 'r') as f:
+    with open(f'{DAFOLDER}/info.json', 'r') as f:
         data = json.load(f)
     path = data['LastWorkspace']
     return path
 
 @eel.expose
 def getKeybinds():
-    with open('data/keybinds.json', 'r') as f:
+    with open(f'{DAFOLDER}/keybinds.json', 'r') as f:
         return json.load(f)
     
 @eel.expose
 def s(name, val, subgrp=""):
-    with open('data/keybinds.json', 'r') as f:
+    with open(f'{DAFOLDER}/keybinds.json', 'r') as f:
         data = json.load(f)
 
     if subgrp == "":
@@ -1088,29 +1086,29 @@ def s(name, val, subgrp=""):
             data[name] = {}
         data[name][subgrp] = val
 
-    with open('data/keybinds.json', 'w') as f:
+    with open(f'{DAFOLDER}/keybinds.json', 'w') as f:
         json.dump(data, f, indent=4)
 
 
 @eel.expose
 def deleteKey(name):
-    with open('data/keybinds.json', 'r') as f:
+    with open(f'{DAFOLDER}/keybinds.json', 'r') as f:
         data = json.load(f)
     
     del data[name]
 
-    with open('data/keybinds.json', 'w') as f:
+    with open(f'{DAFOLDER}/keybinds.json', 'w') as f:
         json.dump(data, f, indent=4)
 
 @eel.expose
 def addKey(name, key, action):
-    with open('data/keybinds.json', 'r') as f:
+    with open(f'{DAFOLDER}/keybinds.json', 'r') as f:
         data = json.load(f)
     data[name] = {
         "keyBind": key,
         "command": action
     }
-    with open('data/keybinds.json', 'w') as f:
+    with open(f'{DAFOLDER}/keybinds.json', 'w') as f:
         json.dump(data, f, indent=4)
 
 @eel.expose
@@ -1172,5 +1170,5 @@ def idecmds(inner, method, *args):
         return {"success": 3, 'e': e}
 
 eel.init(WFOLDER)
-eel.start('index.html', size=(1200, 800), port=0)
+eel.start('index.html', size=(1200, 800), port=0, mode="chrome")
 
