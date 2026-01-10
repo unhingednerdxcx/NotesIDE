@@ -39,5 +39,5 @@ Added Windows support and tested for windows. Next partch will target macOS or L
 Fixed many logical errors REFLECTIONS:-
 this had occured due to the fact that windows uses backslashes instead of forward slashes and i mixed up an old version with the new one
 
-## 1.5.4
+## PATCH 1.5.4
 Fixed minor issues in app.py for linux NOT TESTED YET
