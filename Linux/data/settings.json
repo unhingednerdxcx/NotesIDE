@@ -1,7 +1,7 @@
 {
     "appear": {
         "Theme": "dark",
-        "Editortheme": "Dark",
+        "Editortheme": "vs-dark",
         "Fontfamily": "'Consolas', 'Monaco', monospace",
         "Fontsize": 14,
         "Sidebar": 220
@@ -14,7 +14,9 @@
         "Formatsave": false,
         "Trim": false,
         "Cursorstyle": "line",
-        "Cursorblink": true
+        "Cursorblink": true,
+        "Linenumber": true,
+        "Minimap": true
     },
     "terminal": {
         "Shell": "auto",
@@ -26,12 +28,11 @@
     },
     "app": {
         "Autotime": 3,
-        "Restore": true,
+        "Restore": false,
         "Confirm": true,
         "Update": true,
-        "Tele": "off"
+        "Tele": "off",
+        "log": "error"
     },
-    "key": {
-        
-    }
+    "key": {}
 }

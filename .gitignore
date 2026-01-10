@@ -7,7 +7,6 @@ test
 # Folders
 __pycache__/
 .venv/
-Dict/
 example-folder/
 future-ideas/
 node_modules/
