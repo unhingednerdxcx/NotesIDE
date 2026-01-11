@@ -41,3 +41,6 @@ this had occured due to the fact that windows uses backslashes instead of forwar
 
 ## PATCH 1.5.4
 Fixed minor issues in app.py for linux NOT TESTED YET
+
+## PATCH 1.5.4.2
+Fixed minor issues that requires setup (using the file setup.sh) in linux.

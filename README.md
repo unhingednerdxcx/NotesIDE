@@ -6,3 +6,4 @@ cd location to os-app-folder
 bash run.sh # or for windows run.bat
 # then later you can run python app.py if you want to open the app
 ```
+1
