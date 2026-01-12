@@ -1,8 +1,10 @@
 # Noteside-underDev
  This is a newer repo for notesIDE, this one will have frequent updates, before updates happen on the main repo, they will take place here.
- To initiate the ide for the first tume:-
+ To initiate the ide:-
 
  # Windows
  run run.bat
 
- # MacOS
+# MacOS/Linux
+
+run run.sh
