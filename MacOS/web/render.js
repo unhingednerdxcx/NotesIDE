@@ -98,9 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 })
             }
-            static info(file, note) {
-                // ADD INFO
-            }
             static copy(file, note) {
                 // ADD COPY
             }
@@ -295,7 +292,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const activeButton = document.querySelector(`[data-tab="${tab.name}"]`);
         if (activeButton) activeButton.classList.add('active');
 
-        // Terminal-specific fix
        
     };
 
@@ -535,7 +531,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const placeholder = document.getElementById("placeholder");
 
                     const img = document.createElement("img");
-                    img.src = msg.img;  // your rtr/image file
+                    img.src = msg.img; 
                     img.alt = "Circuit Preview";
                     // Remove placeholder
                     if (placeholder) placeholder.remove();
@@ -604,7 +600,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('verify-upload').addEventListener('change', function() {
-        const isChecked = this.checked;  // true or false
+        const isChecked = this.checked;
         this.dataset.checked = isChecked ? "True" : "False";
         log("verify-upload", isChecked);
     });
@@ -618,7 +614,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (type === 'file') {
             openFile(path, name);
         } else {
-            // Handle folder opening if needed
+            // Handle folder opening
         }
         contextMenu.style.display = "none";
     });
@@ -921,9 +917,9 @@ document.addEventListener('DOMContentLoaded', function() {
     async function editLoad(){
         window.editor = null;
         theme = await eel.jsonmanager('g', 'appear', 'Editortheme')();
-        fontsize = await eel.jsonmanager('g', 'appear', 'Fontsize')();
-        miniMap = await eel.jsonmanager('g', 'appear', 'Minimap')();
-        lines = await eel.jsonmanager('g', 'appear', 'Linenumber')() === true ? "on" : "off";
+        fontsize = await eel.jsonmanager('g', 'appear', 'Fontsize')();1
+        miniMap = await eel.jsonmanager('g', 'editor', 'Minimap')();
+        lines = await eel.jsonmanager('g', 'editor', 'Linenumber', 'js1')() === true ? "on" : "off";
         tabs = parseInt(String(await eel.jsonmanager('g', 'editor', 'Tabsize')()).trim(), 10) || 4;
         wrap = await eel.jsonmanager('g', 'editor', 'Wordwrap')() === true ? "on" : "off";
         bracket = await eel.jsonmanager('g', 'editor', 'Fillbracket')() === true ? "always" : "never";
@@ -1586,9 +1582,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.getElementById('sidebar-width-slider').value = await eel.jsonmanager('g', 'appear', 'Sidebar')();
 
-        document.getElementById('show-minimap-checkbox').checked = await eel.jsonmanager('g', 'appear', 'Minimap')();
+        document.getElementById('show-minimap-checkbox').checked = await eel.jsonmanager('g', 'editor', 'Minimap')();
 
-        document.getElementById('show-line-numbers-checkbox').checked = await eel.jsonmanager('g', 'appear', 'Linenumber')();
+        document.getElementById('show-line-numbers-checkbox').checked = await eel.jsonmanager('g', 'editor', 'Linenumber')();
 
         document.getElementById('tab-size-slider').value = await eel.jsonmanager('g', 'editor', 'Tabsize')();
 
@@ -1616,7 +1612,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.getElementById('terminal-theme-select').value = await eel.jsonmanager('g', 'terminal', 'Theme')();
         
-        document.getElementById('right-click-action-checkbox').checked = await eel.jsonmanager('g', 'terminal', 'Rightclick')();
+        document.getElementById('right-click-action-checkbox').checked = await eel.jsonmanager('g', 'terminal', 'rightclick')();
 
         document.getElementById('autosave-interval-slider').value=  await eel.jsonmanager('g', 'app', 'Autotime')();
 

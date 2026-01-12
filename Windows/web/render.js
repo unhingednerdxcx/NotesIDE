@@ -98,9 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 })
             }
-            static info(file, note) {
-                // ADD INFO
-            }
             static copy(file, note) {
                 // ADD COPY
             }
@@ -295,7 +292,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const activeButton = document.querySelector(`[data-tab="${tab.name}"]`);
         if (activeButton) activeButton.classList.add('active');
 
-        // Terminal-specific fix
        
     };
 
@@ -535,7 +531,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const placeholder = document.getElementById("placeholder");
 
                     const img = document.createElement("img");
-                    img.src = msg.img;  // your rtr/image file
+                    img.src = msg.img; 
                     img.alt = "Circuit Preview";
                     // Remove placeholder
                     if (placeholder) placeholder.remove();
@@ -604,7 +600,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('verify-upload').addEventListener('change', function() {
-        const isChecked = this.checked;  // true or false
+        const isChecked = this.checked;
         this.dataset.checked = isChecked ? "True" : "False";
         log("verify-upload", isChecked);
     });
@@ -618,7 +614,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (type === 'file') {
             openFile(path, name);
         } else {
-            // Handle folder opening if needed
+            // Handle folder opening
         }
         contextMenu.style.display = "none";
     });
