@@ -114,8 +114,39 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 })
             }
-            static copy(file, note) {
-                // ADD COPY
+            static async copy(file, note) {
+                await eel.idecmds('note', 'pull', file, note)(function(msg){
+                   if (msg.success === 1){
+                        navigator.clipboard.writeText(String(msg.b)).then(function() {
+                            showNotification('Success', 'Note copied to clipboard');
+                            const model = editor.getModel();
+                            const position = editor.getPosition();
+
+                            const lineNumber = position.lineNumber -1;
+                            const lineContent = model.getLineContent(lineNumber);
+
+                            // replace the whole line
+                            model.pushEditOperations(
+                                [],
+                                [{
+                                    range: new monaco.Range(
+                                        lineNumber,
+                                        1,
+                                        lineNumber,
+                                        lineContent.length + 1
+                                    ),
+                                    text: ""
+                                }],
+                                () => null
+                            );
+                        });
+                    }
+                    else if (msg.success === 2){
+                        showNotification('Warning', 'No such file found')
+                    } else{
+                        showNotification('Fail', `Could not copy note due to ${msg.e}`)
+                    }
+                })
             }
         }
 
@@ -178,9 +209,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         showNotification('Fail', `Could not delete dictionary due to ${msg.e}`)
                     }
                 })
-            }
-            static copy(file, note) {
-                // ADD COPY
             }
         }
 
@@ -499,8 +527,23 @@ document.addEventListener('DOMContentLoaded', function() {
         log(`Switched to tab 7`, '');
     });
 
-    document.getElementById('open-recent-btn').addEventListener('click', function() {
-        // LATER
+    document.getElementById('open-recent-btn').addEventListener('click', async function() {
+        document.querySelector('.app-container').style.display = 'block';
+        path = await eel.getLastWorkspace()();
+        log("PATH", !path)
+        if (!path) {
+            eel.jsonmanager('s', 'app', 'Restore', false)();
+            showNotification('Info', 'No recent workspace found, please open a folder the next time you use the app');
+            setTimeout(() => {
+                idecmd.sys.closeApp();
+            }, 5000);
+        }
+        document.getElementById('workspace-name').textContent = path.split('/').pop() || path.split('\\').pop();
+        document.getElementById('workspace-name').dataset.path = path;
+
+        eel.listFiles(path)(function(msg){
+            populateFiles(msg.files);
+        });
     });
 
     document.getElementById('refresh-files-btn').addEventListener('click', function() {
@@ -546,7 +589,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('run-btn').addEventListener('click', function() {
-        // LATER BUT FOR NOW run(); for TERMINAL tab
+        cmd = eel.GetCmdForFile(document.getElementById('workspace-name').dataset.filename)(function(msg){
+            switchTab(5)
+            document.getElementById('command-input').value = String(msg)
+        });
     });
 
     document.getElementById('save-btn').addEventListener('click', async function() {
@@ -629,10 +675,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-    // document.getElementById('select-file-btn').addEventListener('click', function() {
-        // LATER
-    // });
 
     document.getElementById('load-image-btn').addEventListener('click', function() {
         eel.displayPic()(async function(msg){
@@ -1321,6 +1363,8 @@ document.addEventListener('DOMContentLoaded', function() {
             li.addEventListener('click', function(){
                 if (object.type === 'file'){
                     openFile(object.path, object.name);
+                    workspace = document.getElementById('workspace-name');
+                    workspace.dataset.filename = li.dataset.name;
                 }
             });
 

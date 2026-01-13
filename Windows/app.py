@@ -1160,6 +1160,38 @@ def startshell(currentdict):
     run_command(f"cd {currentdict}")
 
 @eel.expose
+def GetCmdForFile(filename):
+    log('py', 'filename', filename)
+    try:
+        filenameTrue = filename.rsplit(".", 1)[0]
+    except:
+        return None
+    parts = filename.split('.')
+    cmd = None
+    match parts[-1]:
+        case "py":
+            cmd = f"python3 {filename}"
+        case "js":
+            cmd = f"node {filename}"
+        case "ts":
+            cmd = f"ts-node {filename}"
+        case "java":
+            cmd = f"javac {filename} && java {filenameTrue}"
+        case "c":
+            cmd = f"gcc {filename} -o {filenameTrue} && ./{filenameTrue}"
+        case "cpp" | "cc" | "cxx":
+            cmd = f"gcc {filename} -o {filenameTrue} && ./{filenameTrue}"
+        case "html" | "htm":
+            language = "html"
+        case "rs":
+            cmd = f"rustc {filename} -o {filenameTrue} && ./{filenameTrue}"
+        case "go":
+            cmd = f"go run {filename}"
+        case "bash":
+            cmd = f"bash {filename}"
+    return cmd
+
+@eel.expose
 def idecmds(inner, method, *args):
     inner_class = getattr(idecmds_class, inner)
     method = getattr(inner_class, method)
