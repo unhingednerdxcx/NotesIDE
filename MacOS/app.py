@@ -32,13 +32,23 @@ import yaml
 
 ## === GLOABAL VARS === ##
 
-FOLDER = os.getcwd()
-NFOLDER = os.path.join(FOLDER, 'Notes')
-DFOLDER = os.path.join(FOLDER, 'Dict')
-DAFOLDER = os.path.join(FOLDER, 'data')
-WFOLDER = 'web'
-IFOLDER = os.path.join(WFOLDER, 'img')
-os.makedirs(IFOLDER, exist_ok=True)
+FOLDER = os.path.dirname(os.path.abspath(__file__))  # Directory where app.py is located
+LFOLDER = os.path.join(FOLDER, 'notes.txt') # notes file
+NFOLDER = os.path.join(FOLDER, 'Notes')  # 'Notes' folder
+DFOLDER = os.path.join(FOLDER, 'Dict')  # 'Dict' folder
+DAFOLDER = os.path.join(FOLDER, 'data')  # 'data' folder
+WFOLDER = os.path.join(FOLDER, 'web')  # 'web' folder
+IFOLDER = os.path.join(WFOLDER, 'img')  # 'img' folder inside 'web'
+
+# Print all the paths
+print(FOLDER)
+print(LFOLDER)		
+print(NFOLDER)
+print(DFOLDER)
+print(DAFOLDER)
+print(WFOLDER)
+print(IFOLDER)
+
 status = False
 available = False
 i = 0
@@ -577,8 +587,7 @@ def log(file, info, other, err=False):
     global i
     i = i + 1
     msg = f" ${i} ${file} ${info}  ${other} ${err}"
-    log_file_path = os.path.join(FOLDER, "notes")
-    with open(log_file_path, 'a', encoding='utf-8') as f:
+    with open(LFOLDER, 'a', encoding='utf-8') as f:
         f.write(msg + "\n")
 
 @eel.expose

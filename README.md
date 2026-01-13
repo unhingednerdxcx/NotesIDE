@@ -1,9 +1,14 @@
 # Noteside-underDev
- This is a newer repo for notesIDE, this one will have frequent updates, before updates happen on the main repo, they will take place here.
- To initiate the ide run:
-```bash
-cd location to os-app-folder
-bash run.sh # or for windows run.bat
-# then later you can run python app.py if you want to open the app
+
+This is a newer repo for NotesIDE.  
+Frequent updates happen here before being merged into the main repo.
+
+## How to run
+
+### Windows
+```bat
+run.bat
 ```
-1
+### Linux
+```sh
+

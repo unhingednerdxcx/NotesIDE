@@ -10,7 +10,7 @@
         "Tabsize": 4,
         "Space": false,
         "Wordwrap": false,
-        "Fillbracket": false,
+        "Fillbracket": true,
         "Formatsave": false,
         "Trim": false,
         "Cursorstyle": "line",

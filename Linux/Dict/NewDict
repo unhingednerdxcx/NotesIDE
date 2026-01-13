@@ -3,3 +3,6 @@ function() | description
 to make your dictionaries then insert them for example
 print() | to output
 then you can use notes.info(NewDict) to get the dicts
+
+
+idecmd.note.pull('"xoxo"', '"I"')

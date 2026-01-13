@@ -46,4 +46,4 @@ Fixed minor issues in app.py for linux NOT TESTED YET
 Fixed minor issues that requires setup (using the file setup.sh) in linux.
 
 ## VERSION 1.5.5
-Fixed minor bugs and added a setup.sh for macos to make setup easier
+Fixed some minor issues for macOS to do this i added run.sh setup.sh

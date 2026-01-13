@@ -7,11 +7,13 @@ test
 
 # Folders
 __pycache__/
-.venv/
 example-folder/
 future-ideas/
 node_modules/
 .git
+Linux/.venv
+MacOS/.venv
+Windows/.venv
 
 # Node files
 package-lock.json

@@ -180,7 +180,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else{
                         showNotification('Fail', 'could not make new file successfully')
                     }
-                })
+                });
+            }
+
+            static async test(){
+                showNotification('Info', 'Test function called')
             }
         }
     }
@@ -912,6 +916,55 @@ document.addEventListener('DOMContentLoaded', function() {
             wScreen.style.display = 'flex'
         }
     }
+    
+
+    async function idecmdhandeler(lineText){
+        try {
+            // Improved regular expression for better argument handling
+            const match = lineText.match(/^idecmd\.(\w+)\.(\w+)\((.*)\)$/);
+            if (!match) {
+                showNotification('Fail', "Could not run command due to invalid command format");
+                return;
+            }
+
+            const clsName = match[1];    // e.g., "note"
+            const methodName = match[2]; // e.g., "pull"
+            const argsString = match[3]; // e.g., "'file','note'"
+
+            // Safer argument parsing
+            let args;
+            try {
+                // Try to parse directly first
+                args = JSON.parse(`[${argsString}]`);
+            } catch (e) {
+                // If it fails, try replacing single quotes with double quotes
+                args = JSON.parse(`[${argsString.replace(/'/g, '"')}]`);
+            }
+
+            // Check if the class exists
+            if (!idecmd[clsName]) {
+                showNotification('Fail', `Class not found: ${clsName}`);
+                return;
+            }
+            
+            // Check if the method exists
+            if (typeof idecmd[clsName][methodName] !== "function") {
+                showNotification('Fail', `Method not found: ${clsName}.${methodName}`);
+                return;
+            }
+
+            // Call the method and add logging
+            console.log(`Executing: idecmd.${clsName}.${methodName}(${args.join(', ')})`);
+            await idecmd[clsName][methodName](...args);
+            
+        } catch (e) {
+            console.error('idecmd error:', e);
+            showNotification('Fail', `Could not run function due to ${e}`);
+        }
+
+        editor.trigger('keyboard', 'type', { text: '\n' })
+    }
+
 
 
     async function editLoad(){
@@ -986,40 +1039,72 @@ document.addEventListener('DOMContentLoaded', function() {
                     cursorBlinking: blink,
                 });
 
-                editor.addCommand(monaco.KeyCode.Enter, async function(){
-                    const model = editor.getModel()
-                    const position = editor.getPosition()
-                    const lineText = model.getLineContent(position.lineNumber).trim()
-
-                    if (!lineText.startsWith("idecmd")) {
-                        editor.trigger('keyboard', 'type', { text: '\n' })
-                        return;
-                    }
-
-                    try {
-
-                        const match = lineText.match(/^idecmd\.(\w+)\.(\w+)\((.*)\)$/);
-                        if (!match) showNotification('Fail', "Could not run command due to invalid command format");
-
-                        const clsName = match[1];    // e.g., "note"
-                        const methodName = match[2]; // e.g., "pull"
-                        const argsString = match[3]; // e.g., "'file','note'"
-
-                        // Convert args string to array
-                        const args = JSON.parse(`[${argsString.replace(/'/g, '"')}]`)
-                        // Call the static method
-                        if (idecmd[clsName] && typeof idecmd[clsName][methodName] === "function") {
-                            await idecmd[clsName][methodName](...args)
-                        } else {
-                            showNotification('Fail', `Command not found: ${clsName}.${methodName}`)
+                // Handler for the note editor
+                function handleNoteEditorEnter() {
+                    noteEditor.focus();
+                    setTimeout(() => {
+                        const model = noteEditor.getModel();
+                        const position = noteEditor.getPosition();
+                        const lineText = model.getLineContent(position.lineNumber).trim();
+                        if (!lineText.includes("idecmd")) {
+                            noteEditor.trigger('keyboard', 'type', { text: '\n' });
+                            return;
                         }
-                    } catch (e) {
-                        showNotification('Fail', `Could not run function due to ${e}`)
-                    }
+                        console.log("Note Editor Command Executed");
+                        noteEditor.trigger('keyboard', 'type', { text: '\n' });
+                    }, 10);
+                }
 
-                    editor.trigger('keyboard', 'type', { text: '\n' })
+                // Handler for the dictionary editor
+                function handleDictEditorEnter() {
+                    dictEditor.focus();
+                    setTimeout(() => {
+                        const model = dictEditor.getModel();
+                        const position = dictEditor.getPosition();
+                        const lineText = model.getLineContent(position.lineNumber).trim();
+                        if (!lineText.includes("idecmd")) {
+                            dictEditor.trigger('keyboard', 'type', { text: '\n' });
+                            return;
+                        }
+                        console.log("Dict Editor Command Executed");
+                        dictEditor.trigger('keyboard', 'type', { text: '\n' });
+                    }, 10);
+                }
+
+                // Attach the unique, separate handlers
+                // Attach handlers to DIFFERENT keys to prove they work
+               
+                noteEditor.addCommand(monaco.KeyCode.Enter, handleNoteEditorEnter);
+                dictEditor.addCommand(monaco.KeyCode.Enter, handleDictEditorEnter);
+
+                // Add listeners to STOP the event from bubbling out of each editor
+                editor.onKeyDown(e => {
+                    if (e.keyCode === monaco.KeyCode.Enter) {
+                        e.stopPropagation();
+                        const model = editor.getModel();
+                        const position = editor.getPosition();
+                        const lineText = model.getLineContent(position.lineNumber).trim();
+                        log('Line Text in editor:', lineText);
+                        if (!lineText.includes("idecmd")) {
+                            return;
+                        }
+                        idecmdhandeler(lineText);
+                        console.log("Main Editor Command Executed");
+                        editor.trigger('keyboard', 'type', { text: '\n' });
+                    }
                 });
 
+                noteEditor.onKeyDown(e => {
+                    if (e.keyCode === monaco.KeyCode.Enter) {
+                        e.stopPropagation();
+                    }
+                });
+
+                dictEditor.onKeyDown(e => {
+                    if (e.keyCode === monaco.KeyCode.Enter) {
+                        e.stopPropagation();
+                    }
+                });
                 resolve(window.editor); // resolves when the main editor is ready
             });
         });
@@ -1271,6 +1356,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const okHandler = () => { resolve(modalInput.value); closeModal(); };
             const cancelHandler = () => { resolve(null); closeModal(); };
             const keyHandler = e => {
+                if (!modal.classList.contains('show')) {
+                    return; // Do nothing if the modal isn't showing
+                }
                 if (e.key === 'Enter') okHandler();
                 else if (e.key === 'Escape') cancelHandler();
             };
@@ -1432,6 +1520,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let pendingSudoCommand = "";
 
     inputBox.addEventListener('keydown', function(event) {
+        const workspace = document.getElementById('workspace-name');
+        if (workspace.dataset.tab !== 'terminal') {
+            return; // If we're not in the terminal tab, do nothing and let the event pass through.
+        }
         if (event.key === 'Enter') {
             const command = inputBox.value.trim();
             if (command === "") return;
