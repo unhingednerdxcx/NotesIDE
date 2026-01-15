@@ -1,6 +1,0 @@
-eel
-Pillow
-pexpect
-ptyprocess
-pyserial
-PyYAML

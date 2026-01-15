@@ -59,3 +59,7 @@ Fixed some minor issues for macOS to do this i added run.sh setup.sh
 
 # VERSION 1.7.1
 Made installer for linux **RIGHT CLICK** A_CLICK_ME_TO_INSTALL file to install the file
+
+# VERSION 1.7.2
+
+Made installer for Linux and Windows
