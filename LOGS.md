@@ -66,3 +66,6 @@ Made installer for Linux and Windows
 
 # VERSION 1.7.3
 Almost fully tested all compiled and source-code version of apps, website is also updated!
+
+# VERSION 1.7.4
+Added nested folder features!

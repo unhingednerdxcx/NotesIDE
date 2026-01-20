@@ -624,19 +624,29 @@ def saveFile(content, file_path):
         return {"success": False, "message": str(e)}
 
 
-
 @eel.expose
 def listFiles(directory):
     try:
-        objects = []
-        for obj in os.listdir(directory):
-            obj_path = os.path.join(directory, obj)
-            if os.path.isfile(obj_path):
-                objects.append({"name": obj, "type": "file", "path": obj_path})
-            else:
-                objects.append({"name": obj, "type": "folder", "path": obj_path})
-        log('py', 'sent dicts', objects)
-        return {"success": True, "files": objects} 
+        def get_directory_contents(dir_path):
+            objects = []
+            for obj in os.listdir(dir_path):
+                obj_path = os.path.join(dir_path, obj)
+                if os.path.isfile(obj_path):
+                    objects.append({"name": obj, "type": "file", "path": obj_path})
+                elif os.path.isdir(obj_path):
+                    children = get_directory_contents(obj_path)
+                    objects.append({
+                        "name": obj, 
+                        "type": "folder", 
+                        "path": obj_path,
+                        "children": children,
+                        "expanded": False
+                    })
+            return objects
+        
+        files = get_directory_contents(directory)
+        log('py', 'sent dicts', files)
+        return {"success": True, "files": files} 
     except Exception as e:
         trace = traceback.format_exc()
         log("py", e, trace, True)
@@ -667,7 +677,7 @@ def makeFile(path, fileName):
         return {"success": False, "message": str(e)}
 
 @eel.expose
-def makeNewFolder(path):
+def makeFolder(path):
     try:
         folder_path = os.path.join(path, "NewFolder")
         os.makedirs(folder_path, exist_ok=True)

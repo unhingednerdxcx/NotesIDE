@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const contextCopyTerminal = document.getElementById('ctx-copy-t');
     const contextClearTerminal = document.getElementById('ctx-clear-t');
     let selectedItem = -1;
+    let currentFileTree = null;
 
     window.idecmd =  class{
         static note= class{
@@ -55,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         model.getLineMaxColumn(lineNumber)
                         );
 
-                        console.log('Pulling note:', String(msg.b));  // DEBUG LOG
+                        log('Pulling note:', String(msg.b));  // DEBUG LOG
 
                         model.pushEditOperations([], [
                         { range, text: String(msg.b) }
@@ -267,6 +268,50 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     */
 
+    function loadFileTree(path) {
+        eel.listFiles(path)(function(msg) {
+            if (msg.success) {
+                // If we have a current tree, preserve expanded states
+                if (currentFileTree) {
+                    preserveExpandedStates(currentFileTree, msg.files);
+                }
+                currentFileTree = msg.files;
+                populateFiles(msg.files);
+            }
+        });
+    }
+
+    function preserveExpandedStates(oldTree, newTree) {
+        // Create a map of paths to expanded states from the old tree
+        const expandedStates = {};
+        
+        function collectStates(nodes) {
+            nodes.forEach(node => {
+                if (node.type === 'folder' && node.expanded) {
+                    expandedStates[node.path] = true;
+                }
+                if (node.children) {
+                    collectStates(node.children);
+                }
+            });
+        }
+        
+        // Apply expanded states to the new tree
+        function applyStates(nodes) {
+            nodes.forEach(node => {
+                if (node.type === 'folder' && expandedStates[node.path]) {
+                    node.expanded = true;
+                }
+                if (node.children) {
+                    applyStates(node.children);
+                }
+            });
+        }
+        
+        collectStates(oldTree);
+        applyStates(newTree);
+    }
+
     contextClearTerminal.addEventListener('click', function(){
         try{
             document.getElementById("command-list").innerHTML = "";
@@ -317,7 +362,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const lineNumber = position.lineNumber -1;
                 const lineContent = model.getLineContent(lineNumber);
 
-                // replace the whole line
                 model.pushEditOperations(
                     [],
                     [{
@@ -541,9 +585,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('workspace-name').textContent = path.split('/').pop() || path.split('\\').pop();
         document.getElementById('workspace-name').dataset.path = path;
 
-        eel.listFiles(path)(function(msg){
-            populateFiles(msg.files);
-        });
+        loadFileTree(path);
     });
 
     document.getElementById('refresh-files-btn').addEventListener('click', function() {
@@ -558,21 +600,16 @@ document.addEventListener('DOMContentLoaded', function() {
         eel.makeFile(path, fileName)(function(msg){
             if (msg.success){
                 showNotification('Success', 'File made successfully');
-                eel.listFiles(path)(function(msg){
-                    if (msg.success) {
-                        document.getElementById('welcome-screen').style.display = 'none';
-                        document.querySelector('.app-container').style.display = 'block';
-                        document.getElementById('workspace-name').textContent = path.split('/').pop() || path.split('\\').pop();
-                        workspace = document.getElementById('workspace-name');
-                        workspace.dataset.path = path;
-                        populateFiles(msg.files);
-                    } else{
-                        showNotification('Fail', msg.error);
-                    }
-                });
             } else{
                 showNotification('Fail', `Could not make file due to ${msg.message}`)
             }
+
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.querySelector('.app-container').style.display = 'block';
+            document.getElementById('workspace-name').textContent = path.split('/').pop() || path.split('\\').pop();
+            workspace = document.getElementById('workspace-name');
+            workspace.dataset.path = path;
+            loadFileTree(path);
         })
     });
 
@@ -581,6 +618,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const path = workspace.dataset.path;
         eel.makeFolder(path)(function(msg){
             if (msg.success){
+                const workspace = document.getElementById('workspace-name');
+                loadWorkspace(workspace.dataset.path);
                 showNotification('Success', 'File made successfully');
             } else{
                 showNotification('Fail', `Could not make file due to ${msg.message}`)
@@ -589,7 +628,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('run-btn').addEventListener('click', function() {
-        cmd = eel.GetCmdForFile(document.getElementById('workspace-name').dataset.filename)(function(msg){
+        cmd = eel.GetCmdForFile(document.getElementById('workspace-name').dataset.path)(function(msg){
             switchTab(5)
             document.getElementById('command-input').value = String(msg)
         });
@@ -609,10 +648,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     showNotification('Error', msg.message);
                 }
             });
-        } else {
-            // Show save as dialog
-            SaveAs();
-        }
+        } else {}
     });
 
     document.getElementById('new-note-btn').addEventListener('click', async function() {
@@ -1061,9 +1097,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('workspace-name').textContent = path.split('/').pop() || path.split('\\').pop();
             document.getElementById('workspace-name').dataset.path = path;
 
-            eel.listFiles(path)(function(msg){
-                populateFiles(msg.files);
-            });
+            loadFileTree(path);
             
         } else{
             log('RESTORE', eel.jsonmanager('g', 'app', 'Restore')())
@@ -1109,7 +1143,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             // Call the method and add logging
-            console.log(`Executing: idecmd.${clsName}.${methodName}(${args.join(', ')})`);
+            log(`Executing: idecmd.${clsName}.${methodName}(${args.join(', ')})`);
             await idecmd[clsName][methodName](...args);
             
         } catch (e) {
@@ -1219,7 +1253,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             dictEditor.trigger('keyboard', 'type', { text: '\n' });
                             return;
                         }
-                        console.log("Dict Editor Command Executed");
+                        log("Dict Editor Command Executed");
                         dictEditor.trigger('keyboard', 'type', { text: '\n' });
                     }, 10);
                 }
@@ -1238,7 +1272,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             return;
                         }
                         idecmdhandeler(lineText);
-                        console.log("Main Editor Command Executed");
+                        log("Main Editor Command Executed");
                     }
                 });
 
@@ -1253,6 +1287,33 @@ document.addEventListener('DOMContentLoaded', function() {
                         e.stopPropagation();
                     }
                 });
+
+                editor.onDidChangeCursorPosition((e) => {
+                    if (document.getElementById('workspace-name').dataset.tab === 'editor'){
+                        const position = e.position;
+                        const status = document.getElementById('status-position');
+                        status.textContent = `Ln ${position.lineNumber}, Col ${position.column} Editor-tab`;
+                    }
+                });
+
+                noteEditor.onDidChangeCursorPosition((e) => {
+                    if (document.getElementById('workspace-name').dataset.tab === 'note'){
+                        const position = e.position; // { lineNumber: 1, column: 1 }
+                        const status = document.getElementById('status-position');
+                        status.textContent = `Ln ${position.lineNumber}, Col ${position.column} Note-tab`;
+                    }
+                });
+
+
+                dictEditor.onDidChangeCursorPosition((e) => {
+                    if (document.getElementById('workspace-name').dataset.tab === 'dict'){
+                        const position = e.position; // { lineNumber: 1, column: 1 }
+                        const status = document.getElementById('status-position');
+                        status.textContent = `Ln ${position.lineNumber}, Col ${position.column} Dictionary-tab`;
+                    }
+                });
+
+
                 resolve(window.editor); // resolves when the main editor is ready
             });
         });
@@ -1273,17 +1334,12 @@ document.addEventListener('DOMContentLoaded', function() {
         loadWorkspace(path)
     }
     function loadWorkspace(path){
-        eel.listFiles(path)(function(msg){
-            if (msg.success) {
-                document.getElementById('welcome-screen').style.display = 'none';
-                document.querySelector('.app-container').style.display = 'block';
-                document.getElementById('workspace-name').textContent = path.split('/').pop() || path.split('\\').pop();
-                document.getElementById('workspace-name').dataset.path = path;
-                populateFiles(msg.files);
-            } else{
-                showNotification('Fail', msg.error);
-            }
-        });
+        document.getElementById('welcome-screen').style.display = 'none';
+        document.querySelector('.app-container').style.display = 'block';
+        document.getElementById('workspace-name').textContent = path.split('/').pop() || path.split('\\').pop();
+        workspace = document.getElementById('workspace-name');
+        workspace.dataset.path = path;
+        loadFileTree(path);
     }
     async function confirmBefore(title) {
         if (await eel.jsonmanager('g', 'app', "Confirm")() === false){
@@ -1336,40 +1392,84 @@ document.addEventListener('DOMContentLoaded', function() {
 
    
 
-    function populateFiles(files) {
-        const fileTree = document.getElementById('file-tree');
-        fileTree.innerHTML = '';
+    function populateFiles(files, parentElement = null) {
+        const fileTree = parentElement || document.getElementById('file-tree');
+        
+        if (!parentElement) {
+            fileTree.innerHTML = '';
+        }
 
-        files.forEach(function(object){
+        files.forEach(function(object) {
             const li = document.createElement('li');
-            li.className = 'file-tree-name';
-
-            if (object.type === 'folder'){
-                li.innerHTML = `
-                <i class="fas fa-folder"></i>
-                <span>${object.name}</span>
-                `;
-            } else {
-                li.innerHTML =`
-                <i class="fas fa-file"></i>
-                <span>${object.name}</span>
-                `;
-            }
-
+            li.className = 'file-tree-item';
             li.dataset.path = object.path;
             li.dataset.name = object.name;
             li.dataset.type = object.type;
+            li.dataset.expanded = object.expanded || false;
 
-            li.addEventListener('click', function(){
-                if (object.type === 'file'){
+            // Create a container for the folder/file icon and name
+            const itemContainer = document.createElement('div');
+            itemContainer.className = 'file-tree-name';
+            
+            // Add expand/collapse icon for folders
+            if (object.type === 'folder') {
+                const expandIcon = document.createElement('i');
+                expandIcon.className = object.expanded ? 'fas fa-chevron-down' : 'fas fa-chevron-right';
+                expandIcon.className += ' expand-icon';
+                itemContainer.appendChild(expandIcon);
+            }
+            
+            // Add folder/file icon
+            const icon = document.createElement('i');
+            icon.className = object.type === 'folder' ? 'fas fa-folder' : 'fas fa-file';
+            icon.className += object.type === 'folder' ? ' folder-icon' : ' file-icon';
+            itemContainer.appendChild(icon);
+            
+            // Add name span
+            const nameSpan = document.createElement('span');
+            nameSpan.textContent = object.name;
+            itemContainer.appendChild(nameSpan);
+            
+            li.appendChild(itemContainer);
+
+            // Create container for children (initially hidden)
+            if (object.type === 'folder' && object.children && object.children.length > 0) {
+                const childrenContainer = document.createElement('ul');
+                childrenContainer.className = 'file-tree-children';
+                childrenContainer.style.display = object.expanded ? 'block' : 'none';
+                li.appendChild(childrenContainer);
+                
+                // Add click handler for expanding/collapsing folders
+                itemContainer.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    toggleFolder(li, object);
+                });
+                
+                // Populate children if expanded
+                if (object.expanded) {
+                    populateFiles(object.children, childrenContainer);
+                }
+            } else if (object.type === 'folder') {
+                // Add click handler for empty folders too
+                itemContainer.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    toggleFolder(li, object);
+                });
+            }
+
+            // Add click handler for files
+            if (object.type === 'file') {
+                itemContainer.addEventListener('click', function(e) {
+                    e.stopPropagation();
                     openFile(object.path, object.name);
                     workspace = document.getElementById('workspace-name');
-                    workspace.dataset.filename = li.dataset.name;
-                }
-            });
+                    workspace.dataset.filename = object.name;
+                    workspace.dataset.path = object.path;
+                });
+            }
 
             // Right-click (context menu)
-            li.addEventListener('contextmenu', function(e) {
+            itemContainer.addEventListener('contextmenu', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
 
@@ -1384,9 +1484,59 @@ document.addEventListener('DOMContentLoaded', function() {
                 contextMenu.dataset.type = object.type;
             });
 
-
             fileTree.appendChild(li);
         });
+    }
+
+    function toggleFolder(folderElement, folderObject) {
+        const isExpanded = folderElement.dataset.expanded === 'true';
+        const expandIcon = folderElement.querySelector('.expand-icon');
+        const folderIcon = folderElement.querySelector('.folder-icon');
+        
+        // Find the children container or create it if it doesn't exist
+        let childrenContainer = folderElement.querySelector('.file-tree-children');
+        if (!childrenContainer) {
+            childrenContainer = document.createElement('ul');
+            childrenContainer.className = 'file-tree-children';
+            folderElement.appendChild(childrenContainer);
+        }
+        
+        // Toggle the expanded state
+        folderElement.dataset.expanded = !isExpanded;
+        folderObject.expanded = !isExpanded;
+        
+        if (!isExpanded) { // EXPANDING
+            
+            // Update icons
+            if (expandIcon) expandIcon.className = 'fas fa-chevron-down expand-icon';
+            if (folderIcon) folderIcon.className = 'fas fa-folder-open folder-icon';
+            
+            // Show the container
+            childrenContainer.style.display = 'block';
+
+            if (!folderObject.children || folderObject.children.length === 0) {
+                // Fetch the contents of this folder from the backend
+                eel.listFiles(folderObject.path)(function(msg) {
+                    if (msg.success) {
+                        // Store the children in our data object
+                        folderObject.children = msg.files;
+                        // Populate the DOM with the new children
+                        populateFiles(folderObject.children, childrenContainer);
+                    } else {
+                        showNotification('Error', `Could not load folder contents: ${msg.message}`);
+                    }
+                });
+            }
+
+            loadEditor()
+        } else { //    COLLAPSING
+            // Update icons
+            if (expandIcon) expandIcon.className = 'fas fa-chevron-right expand-icon';
+            if (folderIcon) folderIcon.className = 'fas fa-folder folder-icon';
+            
+            // Hide the container
+            childrenContainer.style.display = 'none';
+        }
     }
 
     function openFile(path, name){
