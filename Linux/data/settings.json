@@ -32,7 +32,7 @@
         "Confirm": true,
         "Update": true,
         "Tele": "off",
-        "log": "error"
+        "log": "on"
     },
     "key": {}
 }

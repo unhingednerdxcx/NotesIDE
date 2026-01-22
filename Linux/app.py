@@ -3,7 +3,6 @@ import logging
 logging.basicConfig(level=logging.INFO)
 import os
 import eel
-from pathlib import Path
 import json
 import subprocess
 import serial.tools.list_ports
@@ -653,6 +652,19 @@ def listFiles(directory):
         return {"success": False, "error": str(e)}
 
 @eel.expose
+def moveFile(initfile, onfile):
+    try:
+        if (os.path.isdir(onfile)):
+            shutil.move(initfile, onfile)
+            return {"success": 1}
+        else:
+            return {"success": 2}
+    except Exception as e:
+        trace = traceback.format_exc()
+        log("py", e, trace, True)
+        return {"success": 3, "message": str(e)}
+
+@eel.expose
 def loadFile(file_path):
     try:
         with open(file_path, 'r') as f:
@@ -694,42 +706,180 @@ def readFile(path, name):
             content = f.read()
             log('py', '', 'here')
             log('py', '', content)
-        filename = os.path.basename(path) 
-        ext = filename.split('.')[-1].lower()
-        language = None
-        match ext:
-            case "py":
-                language = "python"
-            case "js":
-                language = "javascript"
-            case "ts":
-                language = "typescript"
-            case "java":
-                language = "java"
-            case "c":
-                language = "c"
-            case "cpp" | "cc" | "cxx":
-                language = "cpp"
-            case "html" | "htm":
-                language = "html"
-            case "css":
-                language = "css"
-            case "json":
-                language = "json"
-            case "rs":
-                language = "rust"
-            case "go":
-                language = "go"
-            case "bash":
-                language = "shell"
-            case _:
-                language = "text"
-        log('py', 'extension', language)
-        return {"success": True, "content": content, "language": language}
+        return {"success": True, "content": content}
     except Exception as e:
         trace = traceback.format_exc()
         log('py', e, trace, True)
         return {"success": False, "error": str(e)}
+    
+
+@eel.expose
+def fileInfo(path):
+    filename = os.path.basename(path)
+    ext = filename.rsplit(".", 1)[-1].lower() if "." in filename else ""
+    match ext:
+        case "py" | "pyw":
+            language = "python"
+            ico = "devicon-python-plain colored"
+        case "js" | "mjs" | "cjs":
+            language = "javascript"
+            ico = "devicon-javascript-plain colored"
+        case "ts" | "mts" | "cts":
+            language = "typescript"
+            ico = "devicon-typescript-plain colored"
+        case "jsx":
+            language = "javascript"
+            ico = "devicon-react-original colored"
+        case "tsx":
+            language = "typescript"
+            ico = "devicon-react-original colored"
+        case "java":
+            language = "java"
+            ico = "devicon-java-plain colored"
+        case "cs":
+            language = "csharp"
+            ico = "devicon-csharp-plain colored"
+        case "c":
+            language = "c"
+            ico = "devicon-c-original colored"
+        case "cpp" | "cc" | "cxx" | "hpp" | "hh" | "hxx":
+            language = "cpp"
+            ico = "devicon-cplusplus-plain colored"
+        case "go":
+            language = "go"
+            ico = "devicon-go-plain colored"
+        case "rs":
+            language = "rust"
+            ico = "devicon-rust-original colored"
+        case "kt" | "kts":
+            language = "kotlin"
+            ico = "devicon-kotlin-plain colored"
+        case "swift":
+            language = "swift"
+            ico = "devicon-swift-plain colored"
+        case "rb":
+            language = "ruby"
+            ico = "devicon-ruby-plain colored"
+        case "php":
+            language = "php"
+            ico = "devicon-php-plain colored"
+        case "pl" | "pm":
+            language = "perl"
+            ico = "devicon-perl-plain colored"
+        case "sh" | "bash" | "zsh" | "ksh":
+            language = "shell"
+            ico = "devicon-bash-plain colored"
+        case "ps1":
+            language = "powershell"
+            ico = "devicon-powershell-plain colored"
+        case "bat":
+            language = "bat"
+            ico = "devicon-windows8-original colored"
+        case "html" | "htm":
+            language = "html"
+            ico = "devicon-html5-plain colored"
+        case "css":
+            language = "css"
+            ico = "devicon-css3-plain colored"
+        case "json":
+            language = "json"
+            ico = "devicon-json-plain colored"
+        case "xml":
+            language = "xml"
+            ico = "devicon-xml-plain colored"
+        case "yaml" | "yml":
+            language = "yaml"
+            ico = "devicon-yaml-plain colored"
+        case "md" | "markdown" | "mkd" | "mdown":
+            language = "markdown"
+            ico = "devicon-markdown-original colored"
+        case "vue":
+            language = "vue"
+            ico = "devicon-vuejs-plain colored"
+        case "svelte":
+            language = "svelte"
+            ico = "devicon-svelte-plain colored"
+        case "less":
+            language = "less"
+            ico = "devicon-less-plain-wordmark colored"
+        case "scss" | "sass":
+            language = "scss"
+            ico = "devicon-sass-original colored"
+        case "toml":
+            language = "toml"
+            ico = "fas fa-code"
+        case "ini":
+            language = "ini"
+            ico = "fas fa-cog"
+#            case "dockerfile":
+#                language = "dockerfile"
+#                ico = "devicon-docker-plain colored"
+#            case "make" | "mk":
+#                language = "makefile"
+#                ico = "fas fa-code"
+        case "conf":
+            language = "properties"
+            ico = "fas fa-code"
+        case "r":
+            language = "r"
+            ico = "devicon-r-plain colored"
+        case "lua":
+            language = "lua"
+            ico = "devicon-lua-plain colored"
+        case "dart":
+            language = "dart"
+            ico = "devicon-dart-plain colored"
+        case "elm":
+            language = "elm"
+            ico = "devicon-elm-plain colored"
+        case "hs":
+            language = "haskell"
+            ico = "devicon-haskell-plain colored"
+        case "erl" | "hrl":
+            language = "erlang"
+            ico = "devicon-erlang-plain colored"
+        case "ex" | "exs":
+            language = "elixir"
+            ico = "devicon-elixir-plain colored"
+        case "clj" | "cljs":
+            language = "clojure"
+            ico = "devicon-clojure-line colored"
+        case "f" | "f90" | "f95":
+            language = "fortran"
+            ico = "devicon-fortran-original colored"
+        case "fs" | "fsi":
+            language = "fsharp"
+            ico = "devicon-fsharp-plain colored"
+        case "ada":
+            language = "ada"
+            ico = "fas fa-code"
+        case "asm":
+            language = "asm"
+            ico = "fas fa-code"
+        case "d":
+            language = "d"
+            ico = "devicon-d-plain colored"
+        case "jl":
+            language = "julia"
+            ico = "devicon-julia-plain colored"
+        case "vb":
+            language = "vb"
+            ico = "devicon-visualbasic-plain colored"
+        case "log":
+            language = "log"
+            ico = "fas fa-code"
+        case "txt":
+            language = "text"
+            ico = ""
+        case "sql":
+            language = "sql"
+            ico = "devicon-azuresqldatabase-plain colored"
+        case _:
+            language = "text"
+            ico = ""
+
+    log('py', 'extension', f'{ext} {language}')
+    return {"success": True, "lang": language, "ico": ico}
 
 @eel.expose
 def renameFile(newName, oldPath, oldName=''):

@@ -1,0 +1,277 @@
+ $67 $js $RESTORE  ${} $False
+ $68 $js $setting:  $false $False
+ $69 $py $  ${'LastWorkspace': '/home/nonedude/Downloads/Test', 'browser': {'exec': '', 'name': ''}, 'os': {'name': '', 'packageManager': '', 'type': ''}} $False
+ $70 $py $successfully gave /home/nonedude/Downloads/Test  $ $False
+ $71 $js $Sent /home/nonedude/Downloads/Test  $ $False
+ $72 $py $sent dicts  $[{'name': 'hi', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi', 'children': [{'name': 'NewFolder', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder', 'children': [{'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder/Newfile.txt'}], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hellolamo'}, {'name': 'N', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N', 'children': [{'name': 'Database Class Diagram(1).png', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Database Class Diagram(1).png'}, {'name': 'Empty Bash', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash'}, {'name': 'Empty Bash (2)', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash (2)'}, {'name': 'Empty Desktop File.desktop', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Desktop File.desktop'}, {'name': 'Empty File', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty File'}, {'name': 'hi', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hi'}, {'name': 'load', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/load'}, {'name': 'loaf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/loaf'}, {'name': 'main.js', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/main.js'}, {'name': 'Myfile.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Myfile.py'}, {'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Newfile.txt'}, {'name': 'NewNote', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/NewNote'}, {'name': 'Tester', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Tester'}, {'name': 'Untitled document-5.pdf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Untitled document-5.pdf'}, {'name': 'dsd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd', 'children': [{'name': 'd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd/d', 'children': [], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo.py'}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo'}, {'name': 'e', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/e'}], 'expanded': False}] $False
+ $73 $py $extension  $ text $False
+ $74 $py $sent dicts  $[{'name': 'hi', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi', 'children': [{'name': 'NewFolder', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder', 'children': [{'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder/Newfile.txt'}], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hellolamo'}, {'name': 'N', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N', 'children': [{'name': 'Database Class Diagram(1).png', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Database Class Diagram(1).png'}, {'name': 'Empty Bash', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash'}, {'name': 'Empty Bash (2)', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash (2)'}, {'name': 'Empty Desktop File.desktop', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Desktop File.desktop'}, {'name': 'Empty File', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty File'}, {'name': 'hi', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hi'}, {'name': 'load', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/load'}, {'name': 'loaf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/loaf'}, {'name': 'main.js', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/main.js'}, {'name': 'Myfile.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Myfile.py'}, {'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Newfile.txt'}, {'name': 'NewNote', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/NewNote'}, {'name': 'Tester', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Tester'}, {'name': 'Untitled document-5.pdf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Untitled document-5.pdf'}, {'name': 'dsd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd', 'children': [{'name': 'd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd/d', 'children': [], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo.py'}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo'}, {'name': 'e', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/e'}], 'expanded': False}] $False
+ $75 $py $extension  $ text $False
+ $76 $py $extension  $png text $False
+ $77 $py $extension  $ text $False
+ $78 $py $extension  $ text $False
+ $79 $py $extension  $desktop text $False
+ $80 $py $extension  $ text $False
+ $81 $py $extension  $ text $False
+ $82 $py $extension  $ text $False
+ $83 $py $extension  $ text $False
+ $84 $py $extension  $js javascript $False
+ $85 $py $extension  $py python $False
+ $86 $py $extension  $txt text $False
+ $87 $py $extension  $ text $False
+ $88 $py $extension  $ text $False
+ $89 $py $extension  $pdf text $False
+ $90 $py $extension  $py python $False
+ $91 $py $extension  $ text $False
+ $92 $py $extension  $ text $False
+ $93 $py $'utf-8' codec can't decode byte 0x89 in position 0: invalid start byte  $Traceback (most recent call last):
+  File "/home/nonedude/noteside/Linux/app.py", line 706, in readFile
+    content = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x89 in position 0: invalid start byte
+ $True
+ $94 $py $  $here $False
+ $95 $py $  $echo "hello" $False
+ $96 $py $extension  $ text $False
+ $97 $py $  $here $False
+ $98 $py $  $import tkinter as tk
+
+def on_click():
+    label.config(text="Hello, Tkinter!")
+
+# Create the main window
+root = tk.Tk()
+root.title("Simple Tkinter Test")
+root.geometry("300x150")
+
+# Add a label
+label = tk.Label(root, text="Press the button")
+label.pack(pady=20)
+
+# Add a button
+button = tk.Button(root, text="Click Me", command=on_click)
+button.pack()
+
+# Run the application
+root.mainloop()
+ $False
+ $99 $py $extension  $py python $False
+ $100 $py $  $here $False
+ $101 $py $  $
+
+
+ $False
+ $102 $py $extension  $js javascript $False
+ $103 $py $  $here $False
+ $104 $py $  $import tkinter as tk
+
+def on_click():
+    label.config(text="Hello, Tkinter!")
+
+# Create the main window
+root = tk.Tk()
+root.title("Simple Tkinter Test")
+root.geometry("300x150")
+
+# Add a label
+label = tk.Label(root, text="Press the button")
+label.pack(pady=20)
+
+# Add a button
+button = tk.Button(root, text="Click Me", command=on_click)
+button.pack()
+
+# Run the application
+root.mainloop()
+ $False
+ $105 $py $extension  $py python $False
+ $106 $py $  $here $False
+ $107 $py $  $ $False
+ $108 $py $extension  $py python $False
+ $109 $py $[Errno 20] Not a directory: '/home/nonedude/Downloads/Test/N/hellolamo.py'  $Traceback (most recent call last):
+  File "/home/nonedude/noteside/Linux/app.py", line 646, in listFiles
+    files = get_directory_contents(directory)
+  File "/home/nonedude/noteside/Linux/app.py", line 631, in get_directory_contents
+    for obj in os.listdir(dir_path):
+               ~~~~~~~~~~^^^^^^^^^^
+NotADirectoryError: [Errno 20] Not a directory: '/home/nonedude/Downloads/Test/N/hellolamo.py'
+ $True
+ $110 $js $RESTORE  ${} $False
+ $111 $js $setting:  $false $False
+ $112 $js $PATH  $False $False
+ $113 $py $sent dicts  $[{'name': 'hi', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi', 'children': [{'name': 'NewFolder', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder', 'children': [{'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder/Newfile.txt'}], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hellolamo'}, {'name': 'N', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N', 'children': [{'name': 'Database Class Diagram(1).png', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Database Class Diagram(1).png'}, {'name': 'Empty Bash', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash'}, {'name': 'Empty Bash (2)', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash (2)'}, {'name': 'Empty Desktop File.desktop', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Desktop File.desktop'}, {'name': 'Empty File', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty File'}, {'name': 'hi', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hi'}, {'name': 'load', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/load'}, {'name': 'loaf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/loaf'}, {'name': 'main.js', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/main.js'}, {'name': 'Myfile.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Myfile.py'}, {'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Newfile.txt'}, {'name': 'NewNote', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/NewNote'}, {'name': 'Tester', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Tester'}, {'name': 'Untitled document-5.pdf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Untitled document-5.pdf'}, {'name': 'dsd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd', 'children': [{'name': 'd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd/d', 'children': [], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo.py'}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo'}, {'name': 'e', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/e'}], 'expanded': False}] $False
+ $114 $py $extension  $ text $False
+ $115 $py $sent dicts  $[{'name': 'hi', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi', 'children': [{'name': 'NewFolder', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder', 'children': [{'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder/Newfile.txt'}], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hellolamo'}, {'name': 'N', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N', 'children': [{'name': 'Database Class Diagram(1).png', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Database Class Diagram(1).png'}, {'name': 'Empty Bash', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash'}, {'name': 'Empty Bash (2)', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash (2)'}, {'name': 'Empty Desktop File.desktop', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Desktop File.desktop'}, {'name': 'Empty File', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty File'}, {'name': 'hi', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hi'}, {'name': 'load', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/load'}, {'name': 'loaf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/loaf'}, {'name': 'main.js', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/main.js'}, {'name': 'Myfile.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Myfile.py'}, {'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Newfile.txt'}, {'name': 'NewNote', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/NewNote'}, {'name': 'Tester', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Tester'}, {'name': 'Untitled document-5.pdf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Untitled document-5.pdf'}, {'name': 'dsd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd', 'children': [{'name': 'd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd/d', 'children': [], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo.py'}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo'}, {'name': 'e', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/e'}], 'expanded': False}] $False
+ $116 $py $extension  $ text $False
+ $117 $py $extension  $png text $False
+ $118 $py $extension  $ text $False
+ $119 $py $extension  $ text $False
+ $120 $py $extension  $desktop text $False
+ $121 $py $extension  $ text $False
+ $122 $py $extension  $ text $False
+ $123 $py $extension  $ text $False
+ $124 $py $extension  $ text $False
+ $125 $py $extension  $js javascript $False
+ $126 $py $extension  $py python $False
+ $127 $py $extension  $txt text $False
+ $128 $py $extension  $ text $False
+ $129 $py $extension  $ text $False
+ $130 $py $extension  $pdf text $False
+ $131 $py $extension  $py python $False
+ $132 $py $extension  $ text $False
+ $133 $py $extension  $ text $False
+ $1 $js $RESTORE  ${} $False
+ $2 $js $setting:  $false $False
+ $3 $js $PATH  $False $False
+ $4 $py $sent dicts  $[{'name': 'hi', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi', 'children': [{'name': 'NewFolder', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder', 'children': [{'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder/Newfile.txt'}], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hellolamo'}, {'name': 'N', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N', 'children': [{'name': 'Database Class Diagram(1).png', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Database Class Diagram(1).png'}, {'name': 'Empty Bash', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash'}, {'name': 'Empty Bash (2)', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash (2)'}, {'name': 'Empty Desktop File.desktop', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Desktop File.desktop'}, {'name': 'Empty File', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty File'}, {'name': 'hi', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hi'}, {'name': 'load', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/load'}, {'name': 'loaf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/loaf'}, {'name': 'main.js', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/main.js'}, {'name': 'Myfile.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Myfile.py'}, {'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Newfile.txt'}, {'name': 'NewNote', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/NewNote'}, {'name': 'Tester', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Tester'}, {'name': 'Untitled document-5.pdf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Untitled document-5.pdf'}, {'name': 'dsd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd', 'children': [{'name': 'd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd/d', 'children': [], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo.py'}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo'}, {'name': 'e', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/e'}], 'expanded': False}] $False
+ $5 $py $extension  $ text $False
+ $6 $py $sent dicts  $[{'name': 'hi', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi', 'children': [{'name': 'NewFolder', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder', 'children': [{'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder/Newfile.txt'}], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hellolamo'}, {'name': 'N', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N', 'children': [{'name': 'Database Class Diagram(1).png', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Database Class Diagram(1).png'}, {'name': 'Empty Bash', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash'}, {'name': 'Empty Bash (2)', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash (2)'}, {'name': 'Empty Desktop File.desktop', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Desktop File.desktop'}, {'name': 'Empty File', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty File'}, {'name': 'hi', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hi'}, {'name': 'load', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/load'}, {'name': 'loaf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/loaf'}, {'name': 'main.js', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/main.js'}, {'name': 'Myfile.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Myfile.py'}, {'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Newfile.txt'}, {'name': 'NewNote', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/NewNote'}, {'name': 'Tester', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Tester'}, {'name': 'Untitled document-5.pdf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Untitled document-5.pdf'}, {'name': 'dsd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd', 'children': [{'name': 'd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd/d', 'children': [], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo.py'}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo'}, {'name': 'e', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/e'}], 'expanded': False}] $False
+ $7 $py $extension  $ text $False
+ $8 $py $extension  $png text $False
+ $9 $py $extension  $ text $False
+ $10 $py $extension  $ text $False
+ $11 $py $extension  $desktop text $False
+ $12 $py $extension  $ text $False
+ $13 $py $extension  $ text $False
+ $14 $py $extension  $ text $False
+ $15 $py $extension  $ text $False
+ $16 $py $extension  $js javascript $False
+ $17 $py $extension  $py python $False
+ $18 $py $extension  $txt text $False
+ $19 $py $extension  $ text $False
+ $20 $py $extension  $ text $False
+ $21 $py $extension  $pdf text $False
+ $22 $py $extension  $py python $False
+ $23 $py $extension  $ text $False
+ $24 $py $extension  $ text $False
+ $25 $js $RESTORE  ${} $False
+ $26 $js $setting:  $false $False
+ $27 $js $PATH  $False $False
+ $28 $py $sent dicts  $[{'name': 'hi', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi', 'children': [{'name': 'NewFolder', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder', 'children': [{'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder/Newfile.txt'}], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hellolamo'}, {'name': 'N', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N', 'children': [{'name': 'Database Class Diagram(1).png', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Database Class Diagram(1).png'}, {'name': 'Empty Bash', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash'}, {'name': 'Empty Bash (2)', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash (2)'}, {'name': 'Empty Desktop File.desktop', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Desktop File.desktop'}, {'name': 'Empty File', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty File'}, {'name': 'hi', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hi'}, {'name': 'load', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/load'}, {'name': 'loaf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/loaf'}, {'name': 'main.js', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/main.js'}, {'name': 'Myfile.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Myfile.py'}, {'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Newfile.txt'}, {'name': 'NewNote', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/NewNote'}, {'name': 'Tester', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Tester'}, {'name': 'Untitled document-5.pdf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Untitled document-5.pdf'}, {'name': 'dsd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd', 'children': [{'name': 'd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd/d', 'children': [], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo.py'}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo'}, {'name': 'e', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/e'}], 'expanded': False}] $False
+ $29 $py $extension  $ text $False
+ $30 $py $sent dicts  $[{'name': 'hi', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi', 'children': [{'name': 'NewFolder', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder', 'children': [{'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder/Newfile.txt'}], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hellolamo'}, {'name': 'N', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N', 'children': [{'name': 'Database Class Diagram(1).png', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Database Class Diagram(1).png'}, {'name': 'Empty Bash', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash'}, {'name': 'Empty Bash (2)', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash (2)'}, {'name': 'Empty Desktop File.desktop', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Desktop File.desktop'}, {'name': 'Empty File', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty File'}, {'name': 'hi', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hi'}, {'name': 'load', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/load'}, {'name': 'loaf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/loaf'}, {'name': 'main.js', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/main.js'}, {'name': 'Myfile.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Myfile.py'}, {'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Newfile.txt'}, {'name': 'NewNote', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/NewNote'}, {'name': 'Tester', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Tester'}, {'name': 'Untitled document-5.pdf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Untitled document-5.pdf'}, {'name': 'dsd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd', 'children': [{'name': 'd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd/d', 'children': [], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo.py'}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo'}, {'name': 'e', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/e'}], 'expanded': False}] $False
+ $31 $py $extension  $ text $False
+ $32 $py $extension  $png text $False
+ $33 $py $extension  $ text $False
+ $34 $py $extension  $ text $False
+ $35 $py $extension  $desktop text $False
+ $36 $py $extension  $ text $False
+ $37 $py $extension  $ text $False
+ $38 $py $extension  $ text $False
+ $39 $py $extension  $ text $False
+ $40 $py $extension  $js javascript $False
+ $41 $py $extension  $py python $False
+ $42 $py $extension  $txt text $False
+ $43 $py $extension  $ text $False
+ $44 $py $extension  $ text $False
+ $45 $py $extension  $pdf text $False
+ $46 $py $extension  $py python $False
+ $47 $py $extension  $ text $False
+ $48 $py $extension  $ text $False
+ $49 $js $RESTORE  ${} $False
+ $50 $js $setting:  $false $False
+ $51 $js $PATH  $False $False
+ $52 $py $sent dicts  $[{'name': 'hi', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi', 'children': [{'name': 'NewFolder', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder', 'children': [{'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder/Newfile.txt'}], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hellolamo'}, {'name': 'N', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N', 'children': [{'name': 'Database Class Diagram(1).png', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Database Class Diagram(1).png'}, {'name': 'Empty Bash', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash'}, {'name': 'Empty Bash (2)', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash (2)'}, {'name': 'Empty Desktop File.desktop', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Desktop File.desktop'}, {'name': 'Empty File', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty File'}, {'name': 'hi', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hi'}, {'name': 'load', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/load'}, {'name': 'loaf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/loaf'}, {'name': 'main.js', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/main.js'}, {'name': 'Myfile.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Myfile.py'}, {'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Newfile.txt'}, {'name': 'NewNote', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/NewNote'}, {'name': 'Tester', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Tester'}, {'name': 'Untitled document-5.pdf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Untitled document-5.pdf'}, {'name': 'dsd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd', 'children': [{'name': 'd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd/d', 'children': [], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo.py'}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo'}, {'name': 'e', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/e'}], 'expanded': False}] $False
+ $53 $py $extension  $ text $False
+ $54 $py $sent dicts  $[{'name': 'hi', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi', 'children': [{'name': 'NewFolder', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder', 'children': [{'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder/Newfile.txt'}], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hellolamo'}, {'name': 'N', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N', 'children': [{'name': 'Database Class Diagram(1).png', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Database Class Diagram(1).png'}, {'name': 'Empty Bash', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash'}, {'name': 'Empty Bash (2)', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash (2)'}, {'name': 'Empty Desktop File.desktop', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Desktop File.desktop'}, {'name': 'Empty File', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty File'}, {'name': 'hi', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hi'}, {'name': 'load', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/load'}, {'name': 'loaf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/loaf'}, {'name': 'main.js', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/main.js'}, {'name': 'Myfile.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Myfile.py'}, {'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Newfile.txt'}, {'name': 'NewNote', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/NewNote'}, {'name': 'Tester', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Tester'}, {'name': 'Untitled document-5.pdf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Untitled document-5.pdf'}, {'name': 'dsd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd', 'children': [{'name': 'd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd/d', 'children': [], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo.py'}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo'}, {'name': 'e', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/e'}], 'expanded': False}] $False
+ $55 $py $extension  $ text $False
+ $56 $py $extension  $png text $False
+ $57 $py $extension  $ text $False
+ $58 $py $extension  $ text $False
+ $59 $py $extension  $desktop text $False
+ $60 $py $extension  $ text $False
+ $61 $py $extension  $ text $False
+ $62 $py $extension  $ text $False
+ $63 $py $extension  $ text $False
+ $64 $py $extension  $js javascript $False
+ $65 $py $extension  $py python $False
+ $66 $py $extension  $txt text $False
+ $67 $py $extension  $ text $False
+ $68 $py $extension  $ text $False
+ $69 $py $extension  $pdf text $False
+ $70 $py $extension  $py python $False
+ $71 $py $extension  $ text $False
+ $72 $py $extension  $ text $False
+ $73 $py $sent dicts  $[{'name': 'hi', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi', 'children': [{'name': 'NewFolder', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder', 'children': [{'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder/Newfile.txt'}], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hellolamo'}, {'name': 'N', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N', 'children': [{'name': 'Database Class Diagram(1).png', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Database Class Diagram(1).png'}, {'name': 'Empty Bash', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash'}, {'name': 'Empty Bash (2)', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash (2)'}, {'name': 'Empty Desktop File.desktop', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Desktop File.desktop'}, {'name': 'Empty File', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty File'}, {'name': 'hi', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hi'}, {'name': 'load', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/load'}, {'name': 'loaf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/loaf'}, {'name': 'main.js', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/main.js'}, {'name': 'Myfile.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Myfile.py'}, {'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Newfile.txt'}, {'name': 'NewNote', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/NewNote'}, {'name': 'Tester', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Tester'}, {'name': 'Untitled document-5.pdf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Untitled document-5.pdf'}, {'name': 'dsd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd', 'children': [{'name': 'd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd/d', 'children': [], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo.py'}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo'}, {'name': 'e', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/e'}], 'expanded': False}] $False
+ $74 $py $extension  $ text $False
+ $75 $py $extension  $png text $False
+ $76 $py $extension  $ text $False
+ $77 $py $extension  $ text $False
+ $78 $py $extension  $desktop text $False
+ $79 $py $extension  $ text $False
+ $80 $py $extension  $ text $False
+ $81 $py $extension  $ text $False
+ $82 $py $extension  $ text $False
+ $83 $py $extension  $js javascript $False
+ $84 $py $extension  $py python $False
+ $85 $py $extension  $txt text $False
+ $86 $py $extension  $ text $False
+ $87 $py $extension  $ text $False
+ $88 $py $extension  $pdf text $False
+ $89 $py $extension  $py python $False
+ $90 $py $extension  $ text $False
+ $91 $py $extension  $ text $False
+ $92 $py $sent dicts  $[{'name': 'hi', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi', 'children': [{'name': 'NewFolder', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder', 'children': [{'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder/Newfile.txt'}], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hellolamo'}, {'name': 'N', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N', 'children': [{'name': 'Database Class Diagram(1).png', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Database Class Diagram(1).png'}, {'name': 'Empty Bash', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash'}, {'name': 'Empty Bash (2)', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash (2)'}, {'name': 'Empty Desktop File.desktop', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Desktop File.desktop'}, {'name': 'Empty File', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty File'}, {'name': 'hi', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hi'}, {'name': 'load', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/load'}, {'name': 'loaf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/loaf'}, {'name': 'main.js', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/main.js'}, {'name': 'Myfile.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Myfile.py'}, {'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Newfile.txt'}, {'name': 'NewNote', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/NewNote'}, {'name': 'Tester', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Tester'}, {'name': 'Untitled document-5.pdf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Untitled document-5.pdf'}, {'name': 'dsd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd', 'children': [{'name': 'd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd/d', 'children': [], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo.py'}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo'}, {'name': 'e', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/e'}], 'expanded': False}] $False
+ $93 $py $extension  $ text $False
+ $94 $py $extension  $png text $False
+ $95 $py $extension  $ text $False
+ $96 $py $extension  $ text $False
+ $97 $py $extension  $desktop text $False
+ $98 $py $extension  $ text $False
+ $99 $py $extension  $ text $False
+ $100 $py $extension  $ text $False
+ $101 $py $extension  $ text $False
+ $102 $py $extension  $js javascript $False
+ $103 $py $extension  $py python $False
+ $104 $py $extension  $txt text $False
+ $105 $py $extension  $ text $False
+ $106 $py $extension  $ text $False
+ $107 $py $extension  $pdf text $False
+ $108 $py $extension  $py python $False
+ $109 $py $extension  $ text $False
+ $110 $py $extension  $ text $False
+ $111 $py $sent dicts  $[] $False
+ $112 $py $sent dicts  $[{'name': 'hi', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi', 'children': [{'name': 'NewFolder', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder', 'children': [{'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hi/NewFolder/Newfile.txt'}], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/hellolamo'}, {'name': 'N', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N', 'children': [{'name': 'Database Class Diagram(1).png', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Database Class Diagram(1).png'}, {'name': 'Empty Bash', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash'}, {'name': 'Empty Bash (2)', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Bash (2)'}, {'name': 'Empty Desktop File.desktop', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty Desktop File.desktop'}, {'name': 'Empty File', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Empty File'}, {'name': 'hi', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hi'}, {'name': 'load', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/load'}, {'name': 'loaf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/loaf'}, {'name': 'main.js', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/main.js'}, {'name': 'Myfile.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Myfile.py'}, {'name': 'Newfile.txt', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Newfile.txt'}, {'name': 'NewNote', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/NewNote'}, {'name': 'Tester', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Tester'}, {'name': 'Untitled document-5.pdf', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/Untitled document-5.pdf'}, {'name': 'dsd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd', 'children': [{'name': 'd', 'type': 'folder', 'path': '/home/nonedude/Downloads/Test/N/dsd/d', 'children': [], 'expanded': False}], 'expanded': False}, {'name': 'hellolamo.py', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo.py'}, {'name': 'hellolamo', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/hellolamo'}, {'name': 'e', 'type': 'file', 'path': '/home/nonedude/Downloads/Test/N/e'}], 'expanded': False}] $False
+ $113 $py $extension  $ text $False
+ $114 $py $extension  $png text $False
+ $115 $py $extension  $ text $False
+ $116 $py $extension  $ text $False
+ $117 $py $extension  $desktop text $False
+ $118 $py $extension  $ text $False
+ $119 $py $extension  $ text $False
+ $120 $py $extension  $ text $False
+ $121 $py $extension  $ text $False
+ $122 $py $extension  $js javascript $False
+ $123 $py $extension  $py python $False
+ $124 $py $extension  $txt text $False
+ $125 $py $extension  $ text $False
+ $126 $py $extension  $ text $False
+ $127 $py $extension  $pdf text $False
+ $128 $py $extension  $py python $False
+ $129 $py $extension  $ text $False
+ $130 $py $extension  $ text $False
+ $131 $py $  $here $False
+ $132 $py $  $
+
+
+ $False
+ $133 $py $extension  $js javascript $False
+ $134 $py $SHELL  $/usr/bin/zsh $False
+ $135 $py $SHELL  $/usr/bin/zsh $False
+ $136 $py $SHELL  $/usr/bin/zsh $False
+ $137 $py $[Errno 20] Not a directory: '/home/nonedude/Downloads/Test/N/main.js'  $Traceback (most recent call last):
+  File "/home/nonedude/noteside/Linux/app.py", line 646, in listFiles
+    files = get_directory_contents(directory)
+  File "/home/nonedude/noteside/Linux/app.py", line 631, in get_directory_contents
+    for obj in os.listdir(dir_path):
+               ~~~~~~~~~~^^^^^^^^^^
+NotADirectoryError: [Errno 20] Not a directory: '/home/nonedude/Downloads/Test/N/main.js'
+ $True
+ $138 $py $[Errno 20] Not a directory: '/home/nonedude/Downloads/Test/N/main.js'  $Traceback (most recent call last):
+  File "/home/nonedude/noteside/Linux/app.py", line 646, in listFiles
+    files = get_directory_contents(directory)
+  File "/home/nonedude/noteside/Linux/app.py", line 631, in get_directory_contents
+    for obj in os.listdir(dir_path):
+               ~~~~~~~~~~^^^^^^^^^^
+NotADirectoryError: [Errno 20] Not a directory: '/home/nonedude/Downloads/Test/N/main.js'
+ $True

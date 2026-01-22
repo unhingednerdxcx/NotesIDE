@@ -577,13 +577,14 @@ document.addEventListener('DOMContentLoaded', function() {
         log("PATH", !path)
         if (!path) {
             eel.jsonmanager('s', 'app', 'Restore', false)();
-            showNotification('Info', 'No recent workspace found, please open a folder the next time you use the app');
+            showNotification('Info', 'No recent workspace found, please open a folder the next time you use the app Closing app..');
             setTimeout(() => {
                 idecmd.sys.closeApp();
-            }, 5000);
+            }, 3000);
         }
         document.getElementById('workspace-name').textContent = path.split('/').pop() || path.split('\\').pop();
         document.getElementById('workspace-name').dataset.path = path;
+        document.getElementById('welcome-screen').style.display = 'none'
 
         loadFileTree(path);
     });
@@ -1074,6 +1075,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateTime();
     setInterval(updateTime, 1000);
     startUp()
+    initializeDragAndDrop()
    
 
     // === FUNCTIONS === //
@@ -1389,8 +1391,77 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+  
+    function initializeDragAndDrop() {
+        const fileTreeContainer = document.getElementById('sidebar-content')
 
-   
+        fileTreeContainer.addEventListener('dragstart', e => {
+            const item = e.target.closest('.file-tree-item')
+            if (item) {
+                e.dataTransfer.setData("text/plain", item.dataset.path)
+                item.style.opacity = '0.5'
+            }
+        })
+
+        fileTreeContainer.addEventListener('dragend', e => {
+            const item = e.target.closest('.file-tree-item')
+            if (item) item.style.opacity = ''
+            document.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'))
+        })
+
+        fileTreeContainer.addEventListener('dragover', e => {
+            e.preventDefault()
+            let dropTarget = e.target.closest('.file-tree-item')
+            if (!dropTarget && fileTreeContainer.contains(e.target)) {
+                dropTarget = fileTreeContainer
+            }
+            if (dropTarget) {
+                document.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'))
+                dropTarget.classList.add('drag-over')
+            }
+        })
+
+        fileTreeContainer.addEventListener('dragleave', e => {
+            if (!fileTreeContainer.contains(e.relatedTarget)) {
+                fileTreeContainer.classList.remove('drag-over')
+            }
+        })
+
+        fileTreeContainer.addEventListener('drop', e => {
+            e.preventDefault()
+            e.stopPropagation()
+
+            document.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'))
+
+            const draggedPath = e.dataTransfer.getData("text/plain")
+            if (!draggedPath) return
+
+            const targetLi = e.target.closest('.file-tree-item')
+            let targetPath
+
+            if (targetLi) {
+                targetPath = targetLi.dataset.path
+            } else if (e.currentTarget === fileTreeContainer) {
+                const workspace = document.getElementById('workspace-name')
+                targetPath = workspace.dataset.path
+            } else {
+                return
+            }
+
+            if (draggedPath === targetPath) return
+
+            eel.moveFile(draggedPath, targetPath)(msg => {
+                if (msg.success == 1) {
+                    showNotification('Success', 'Item moved successfully')
+                    const workspace = document.getElementById('workspace-name')
+                    loadWorkspace(workspace.dataset.path)
+                } else if (msg.success == 3) {
+                    showNotification('Error', msg.message)
+                }
+            })
+        })
+    }
+
 
     function populateFiles(files, parentElement = null) {
         const fileTree = parentElement || document.getElementById('file-tree');
@@ -1408,36 +1479,9 @@ document.addEventListener('DOMContentLoaded', function() {
             li.dataset.expanded = object.expanded || false;
             li.draggable = true;
 
-            li.addEventListener('dragstart', function(e) {
-                e.dataTransfer.setData("text/plain", object.path);
-                console.log("Dragging started for:", object.path);
-            });
-
-            li.addEventListener('dragover', function(e) {
-                e.preventDefault(); 
-            });
-
-            li.addEventListener('drop', function(e) {
-                e.preventDefault();
-                
-
-                const draggedPath = e.dataTransfer.getData("text/plain");
-                const targetLi = e.target.closest('.file-tree-item');
-                
-                if (targetLi) {
-                    const targetPath = targetLi.dataset.path;
-                    
-                    console.log("Dragged item:", draggedPath);
-                    console.log("Dropped on:", targetPath);
-                    
-                }
-            });
-
-            // Create a container for the folder/file icon and name
             const itemContainer = document.createElement('div');
             itemContainer.className = 'file-tree-name';
             
-            // Add expand/collapse icon for folders
             if (object.type === 'folder') {
                 const expandIcon = document.createElement('i');
                 expandIcon.className = object.expanded ? 'fas fa-chevron-down' : 'fas fa-chevron-right';
@@ -1445,73 +1489,73 @@ document.addEventListener('DOMContentLoaded', function() {
                 itemContainer.appendChild(expandIcon);
             }
             
-            // Add folder/file icon
             const icon = document.createElement('i');
-            icon.className = object.type === 'folder' ? 'fas fa-folder' : 'fas fa-file';
-            icon.className += object.type === 'folder' ? ' folder-icon' : ' file-icon';
+            
+            if (object.type === 'folder') {
+                icon.className = 'fas fa-folder folder-icon';
+            } else {
+                // Then get the specific icon asynchronously
+                eel.fileInfo(object.path)(function(msg) {
+                    if (msg && msg.ico) {
+                        icon.className = msg.ico;
+                    }
+                });
+            }
+
             itemContainer.appendChild(icon);
             
-            // Add name span
             const nameSpan = document.createElement('span');
             nameSpan.textContent = object.name;
             itemContainer.appendChild(nameSpan);
-            
+            icon.style.marginRight = '8px';
             li.appendChild(itemContainer);
 
-            // Create container for children (initially hidden)
-            if (object.type === 'folder' && object.children && object.children.length > 0) {
-                const childrenContainer = document.createElement('ul');
-                childrenContainer.className = 'file-tree-children';
-                childrenContainer.style.display = object.expanded ? 'block' : 'none';
-                li.appendChild(childrenContainer);
-                
-                // Add click handler for expanding/collapsing folders
-                itemContainer.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    toggleFolder(li, object);
-                });
-                
-                // Populate children if expanded
-                if (object.expanded) {
-                    populateFiles(object.children, childrenContainer);
+                if (object.type === 'folder' && object.children && object.children.length > 0) {
+                    const childrenContainer = document.createElement('ul')
+                    childrenContainer.className = 'file-tree-children'
+                    childrenContainer.style.display = object.expanded ? 'block' : 'none'
+                    li.appendChild(childrenContainer)
+                    
+                    itemContainer.addEventListener('click', function(e) {
+                        e.stopPropagation()
+                        toggleFolder(li, object)
+                    })
+                    
+                    if (object.expanded) {
+                        populateFiles(object.children, childrenContainer)
+                    }
+                } else if (object.type === 'folder') {
+                    itemContainer.addEventListener('click', function(e) {
+                        e.stopPropagation()
+                        toggleFolder(li, object)
+                    })
                 }
-            } else if (object.type === 'folder') {
-                // Add click handler for empty folders too
-                itemContainer.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    toggleFolder(li, object);
-                });
-            }
 
-            // Add click handler for files
-            if (object.type === 'file') {
-                itemContainer.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    openFile(object.path, object.name);
-                    workspace = document.getElementById('workspace-name');
-                    workspace.dataset.filename = object.name;
-                    workspace.dataset.path = object.path;
-                });
-            }
+                if (object.type === 'file') {
+                    itemContainer.addEventListener('click', function(e) {
+                        e.stopPropagation()
+                        openFile(object.path, object.name)
+                        workspace = document.getElementById('workspace-name')
+                        workspace.dataset.filename = object.name
+                        workspace.dataset.path = object.path
+                    })
+                }
 
-            // Right-click (context menu)
-            itemContainer.addEventListener('contextmenu', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
+                itemContainer.addEventListener('contextmenu', function(e) {
+                    e.preventDefault()
+                    e.stopPropagation()
 
-                // Show menu at mouse position
-                contextMenu.style.display = "block";
-                contextMenu.style.left = `${e.pageX}px`;
-                contextMenu.style.top = `${e.pageY}px`;
+                    contextMenu.style.display = "block"
+                    contextMenu.style.left = `${e.pageX}px`
+                    contextMenu.style.top = `${e.pageY}px`
 
-                // Store details for button actions
-                contextMenu.dataset.path = object.path;
-                contextMenu.dataset.name = object.name;
-                contextMenu.dataset.type = object.type;
-            });
+                    contextMenu.dataset.path = object.path
+                    contextMenu.dataset.name = object.name
+                    contextMenu.dataset.type = object.type
+                })
 
-            fileTree.appendChild(li);
-        });
+                fileTree.appendChild(li)
+            })
     }
 
     function toggleFolder(folderElement, folderObject) {
@@ -1572,11 +1616,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.editorReady.then(() => {
                     editor.setValue(msg.content);
                     const model = editor.getModel();
-                    monaco.editor.setModelLanguage(model, msg.language);
+                    eel.fileInfo(path)(function(msg){
+                        monaco.editor.setModelLanguage(model, msg.lang)
+                        document.getElementById('status-lang').textContent = msg.lang;
+
+                    })
                     document.getElementById('current-file-name').textContent = name;
                     document.getElementById('current-file-name').dataset.path = path;
                     document.getElementById('status-file').textContent = name;
-                    document.getElementById('status-lang').textContent = msg.language;
                     addTab(name, path);
                 });
             } else {

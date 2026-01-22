@@ -72,3 +72,7 @@ Added nested folder features!
 
 # VERSION 1.8 BETA
 Added drag and drop feature
+
+# VERSION 1.8
+More support to drag and drop feature and fixed the open-recent button issue and other minor bugs(check the linux folder).
+Also added icons for programming languages
